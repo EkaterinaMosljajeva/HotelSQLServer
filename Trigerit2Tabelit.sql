@@ -22,12 +22,12 @@ FOR UPDATE
 AS
 INSERT INTO logi(kuupaev,andmed,kasutaja)
 SELECT GETDATE(),
-CONCAT('Vanad andmed: ',deleted.reservationID,', ', g1.guestID, 'uued -', inserted.reservationID,', ', g2.guestID),
+CONCAT('Vanad andmed ',deleted.date_out,', ', g1.last_name, ' Uued -', inserted.date_out,', ', g2.last_name),
 USER
 FROM deleted
 INNER JOIN inserted ON deleted.reservationID=inserted.reservationID
 INNER JOIN guest g1 ON deleted.guestID=g1.guestID
 INNER JOIN guest g2 ON inserted.guestID=g2.guestID
 --kontroll
-UPDATE reservation SET guestID=1
-WHERE date_in='2023-09-10';
+UPDATE reservation SET date_out='2023-10-24'
+WHERE reservationID=1;
