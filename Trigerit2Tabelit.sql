@@ -35,17 +35,17 @@ WHERE reservationID=1;
 --Triger mis jälgib tabelisse uuendamine (XAMPP)
 CREATE TRIGGER `reservationLisamine` BEFORE INSERT ON `reservation` FOR EACH ROW *
 INSERT INTO logi(kuupaev,andmed,kasutaja) 
-SELECT NOW(), 
+VALUES (NOW(), 
 CONCAT(NEW.reservationID,', ', g.guestID), 
-USER() 
+USER())
 FROM reservation 
 INNER JOIN guest g ON NEW.guestID=g.guestID
 
 --Triger mis jälgib tabelisse uuendamine (XAMPP)
 CREATE TRIGGER `reservationUuendamine` BEFORE UPDATE ON `reservation` FOR EACH ROW 
 INSERT INTO logi(kuupaev,andmed,kasutaja) 
-SELECT NOW(), CONCAT('Vanad andmed ',OLD.date_out,', ', g1.last_name, '\n Uued -', NEW.date_out,', ', g2.last_name), 
-USER() 
+VALUES (NOW(), CONCAT('Vanad andmed ',OLD.date_out,', ', g1.last_name, '\n Uued -', NEW.date_out,', ', g2.last_name), 
+USER())
 FROM reservation r 
 INNER JOIN guest g1 ON OLD.guestID=g1.guestID 
 INNER JOIN guest g2 ON NEW.guestID=g2.guestID 
