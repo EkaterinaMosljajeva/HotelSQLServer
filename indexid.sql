@@ -1,3 +1,4 @@
+--36
 CREATE TABLE [tblEmployee](
 [Id] int Primary key,
 [Name] nvarchar(50),
@@ -17,6 +18,7 @@ CREATE CLUSTERED INDEX IX_tblEmployee_Gender_Salary ON tblEmployee(Gender DESC, 
 
 CREATE NONCLUSTERED INDEX IX_tblEmployee_Name ON tblEmployee(Name)
 
+--37
 EXECUTE sp_helpindex tblEmployee
 
 INSERT INTO tblEmployee VALUES (1,'Mike',4500,'Male','New York')
@@ -35,6 +37,7 @@ CREATE UNIQUE INDEX IX_tblEmployee_City
 ON tblEmployee(City)
 WITH IGNORE_DUP_KEY
 
+--38
 CREATE NONCLUSTERED INDEX IX_tblEmployee_Salary
 ON tblEmployee (Salary ASC)
 
