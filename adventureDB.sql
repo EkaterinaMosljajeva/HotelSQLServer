@@ -1,4 +1,4 @@
---32.
+--32 Mitme avaldisega tabeliväärtusega funktsioonid
 Create Function fn_ILTVF_GetEmployees()
 Returns Table
 as
@@ -20,7 +20,7 @@ Select * from fn_MSTVF_GetEmployees()
 Update fn_ILTVF_GetEmployees() set FirstName='Rob1' Where EmployeeKey=4;
 Update fn_MSTVF_GetEmployees() set Name='Rob2' Where Id=4
 
---33.
+--33. Funktsiooniga seotud tähtsad kontseptsioonid
 CREATE FUNCTION fn_GetEmployeeNameById(@id int)
 Returns nvarchar(20)
 as
@@ -46,7 +46,7 @@ begin
 return (select FirstName from dbo.DimEmployee where EmployeeKey = @id)
 End
 
---34.
+--34. Ajutised tabelid
 Create Table #PersonDetails(Id int, Name nvarchar(20))
 Insert into #PersonDetails Values (1,'Mike')
 Insert into #PersonDetails Values (2,'John')
@@ -70,7 +70,7 @@ END
 
 CREATE TABLE ##EmployeeDetails(Id int primary key, Name nvarchar(20))
 
---35.
+--35. Ineksid serveris
 Select * from DimEmployee  where BaseRate > 20 and BaseRate < 30
 
 CREATE Index IX_DimEmployee_BaseRate
