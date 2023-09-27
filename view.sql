@@ -1,4 +1,4 @@
---39
+--39 View SQL serveris
 CREATE TABLE tblEmployee(
 Id int Primary key,
 Name nvarchar(50),
@@ -47,7 +47,7 @@ join tblDepartament
 on tblEmployee.DepartamentId = tblDepartament.DeptId
 Group by DeptName
 
---40
+--40 View uuendused
 CREATE VIEW vWEmployeesDataExceptSalary
 AS
 Select Id, Name, Gender, DepartamentId
@@ -69,7 +69,7 @@ on tblEmployee.DepartamentId = tblDepartament.DeptId
 Update vwEmployeeDetailsByDepartment
 SET DeptName='IT' where Name='John'
 
---41
+--41 indekseeritud view
 CREATE TABLE tblProduct(
 ProductId int primary key,
 Name nvarchar(20),
@@ -109,7 +109,7 @@ group by name
 CREATE Unique clustered index UIX_vWTotalSalecByProduct_Name
 On vWTotalSalesByProduct(Name)
 
---42
+--42 View piirangud
 CREATE TABLE tblEmployee
 (
   Id int Primary Key,
